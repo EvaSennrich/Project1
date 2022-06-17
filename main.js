@@ -15,12 +15,15 @@ const imageURL = "https://image.tmdb.org/t/p/w500";
 //Search URL which allows us to search for movies after the event listener of 'Submit' it's triggered
 const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIKey}&query=`;
 
-//For accessing the form HTML
+//code for accessing the HTML
 let form = document.querySelector("#form");
 let inputForm = document.querySelector(".inputForm");
-
-//For accessing the empty Div for content movies
 let contentDiv = document.querySelector("#contentDiv");
+let moreContentDiv = document.querySelector(".moreContentDiv");
+let showMoreMoviesBtn = document.querySelector(".showMoreMoviesBtn");
+
+const pageSize = 10;
+var currentApiPage = 0;
 
 //popular movies: "/discover/movie?sort_by=popularity.desc"
 
@@ -44,7 +47,6 @@ getDataMovies(apiURL);
 
 //Function that display movies
 const displayMovies = (movies) => {
-  contentDiv.innerHTML = "";
   // code that iterates on each object movie and FOR EACH movie creates a div with its post, title and vote.
   movies.forEach((movie) => {
     contentDiv.innerHTML +=
@@ -75,7 +77,9 @@ const displayMovies = (movies) => {
 //   });
 // };
 
+//code for Submit form, for user movie search
 form.addEventListener("submit", (e) => {
+  contentDiv.innerHTML = "";
   //This code prevents the parameter ->e(event) to not be handled if the event "submit" isn't listened/handled!
 
   e.preventDefault();
@@ -91,3 +95,10 @@ form.addEventListener("submit", (e) => {
     getDataMovies(apiURL);
   }
 });
+
+//code that handles show more movies button
+showMoreMoviesBtn.addEventListener("click", (e) => {
+  console.log("clicked");
+});
+
+// https://api.themoviedb.org/3/discover/movie?api_key=###&sort_by=popularity.desc&with_genres=28&page=1
