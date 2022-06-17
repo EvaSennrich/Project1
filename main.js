@@ -1,10 +1,24 @@
-//API key
+//API key which is the 3rd piece/part of the API url
 const APIKey = "9f7ff340242713835a084c08084a9afa";
-//Image URL
+
+//API URL:This one contains the 3 pieces already: base URL+bestMoviesURL+APIkey
+
+//POPULAR MOVIES API URL
+const apiURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9f7ff340242713835a084c08084a9afa";
+
+//NOW PLAYING API URL
+// const apiURL = `https://api.themoviedb.org/3/search/movie/now_playing?api_key=${APIKey}`;
+
+//Image URL to access the posters for each movie
 const imageURL = "https://image.tmdb.org/t/p/w500";
+
+//Search URL which allows us to search for movies after the event listener of 'Submit' it's triggered
+const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIKey}&query=`;
 
 //For accessing the form HTML
 let form = document.querySelector("#form");
+let inputForm = document.querySelector(".inputForm");
+
 //For accessing the empty Div for content movies
 let contentDiv = document.querySelector("#contentDiv");
 
@@ -19,31 +33,61 @@ let contentDiv = document.querySelector("#contentDiv");
 //2nd part of the url:/discover/movie?sort_by=popularity.desc&
 //3rd part:api key
 
-const getDataMovies = async () => {
-  const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9f7ff340242713835a084c08084a9afa";
+const getDataMovies = async (url) => {
   const response = await fetch(url);
   const data = await response.json();
   console.log(data);
-  //
   displayMovies(data.results);
+  // ratingColor(data.results.vote_average);
 };
-
-getDataMovies();
+getDataMovies(apiURL);
 
 //Function that display movies
 const displayMovies = (movies) => {
+  contentDiv.innerHTML = "";
   // code that iterates on each object movie and FOR EACH movie creates a div with its post, title and vote.
   movies.forEach((movie) => {
     contentDiv.innerHTML +=
       //Double check if it's a good practice to create a div for pics only and another one for the info: title, vote
-      `<div class="movieContainers">
-    <img src="${imageURL}${movie.poster_path}" alt="${movie.title}">
+      `<div class="movieDetails">
+      <div class="imageContainer">
+    <img class="image" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
+    </div>
+    <div id="movieInfoContainer">
     <h2 class="movieTitle" >${movie.title}</h2>
-    <h3 class="movieVote" >${movie.vote_average}</h3>
-    </div> 
+    <h5 class="movieVote" >${movie.vote_average}</h5>
+    </div>
+    </div>
     <div class="movieOverview>
     <h3>Overview:</h3>
     ${movie.overview}
     </div>`;
   });
 };
+
+// const ratingColor = (votes) => {
+//   votes.forEach((vote) => {
+//     if (vote < 5) {
+//       return (movie.vote_average.style.color = "green");
+//     } else {
+//       return (movie.vote_average.style.color = "red");
+//     }
+//   });
+// };
+
+form.addEventListener("submit", (e) => {
+  //This code prevents the parameter ->e(event) to not be handled if the event "submit" isn't listened/handled!
+
+  e.preventDefault();
+  //this var/const stores the value that the user inputs or enter in the inpit field of the form
+  const searchTerm = inputForm.value;
+
+  //this code is a conditional that tells the computer if searchTerm = true or triggered --> do this  --> which is to run the getDataMovies func which fecths the movies data or objects but in this case would be the specific value that the users inputs, thus we pass the searchURL and concatenate it with the value entered by the user(searchTerm).
+  if (searchTerm) {
+    getDataMovies(searchURL + searchTerm);
+    inputForm.value = "";
+    //and this else says the computer if there's not input entered or the movie does not exist just fecth all movies
+  } else {
+    getDataMovies(apiURL);
+  }
+});

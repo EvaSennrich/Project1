@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,31 +8,118 @@
 
 body {
   background-color: #282828;
+  font-family: "Roboto", sans-serif;
 }
 
 #header {
-  margin-top: 3rem;
+  padding: 1.3rem;
+  /* margin-top: 3rem; */
   display: flex;
   justify-content: space-evenly;
-  /* background-color: #7f7f7f; */
+  background-color: rgb(93, 0, 0);
+}
+
+form {
+  margin-top: 0.5rem;
 }
 
 .title {
   color: whitesmoke;
+  font-size: 2.5rem;
+}
+
+.title::before {
+  content: "🍿";
+  padding: 0.5rem;
 }
 .inputForm {
   background-color: transparent;
-  border: 2px solid whitesmoke;
+  border: 1.5px solid whitesmoke;
   padding: 0.5rem 1rem;
   border-radius: 16px;
   font-size: 1rem;
+  color: black;
+  font-family: inherit;
 }
 
 .inputForm::placeholder {
-  color: #7f7f7f;
+  color: #a5a2a2;
 }
 
 .inputForm:focus {
   outline: none;
-  background-color: #050505;
+  background-color: white;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  margin-left: 1rem;
+  font-family: inherit;
+  outline: none;
+  border: 1.5px solid whitesmoke;
+  cursor: pointer;
+  box-shadow: 0 3px #999;
+  background-color: rgb(22, 1, 1);
+  color: white;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  color: #282828;
+  border: 1px solid black;
+}
+button:active {
+  background-color: #116914;
+  box-shadow: 0 3px rgb(0, 0, 0);
+  transform: translateY(4px);
+  color: whitesmoke;
+}
+
+#contentDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-evenly;
+  margin: 10px 1.5rem;
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+#movieInfoContainer {
+  display: flex;
+  width: 9rem;
+}
+
+.image {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  height: 13rem;
+  width: 9rem;
+  border-radius: 10px;
+  box-shadow: 20px -5px 50px rgba(255, 255, 255, 0.3);
+}
+
+.image:hover {
+  /* transform: rotateY(-20deg) translateZ(10px); */
+  transform: scale(1.1);
+}
+
+.movieTitle {
+  color: whitesmoke;
+  font-size: 1rem;
+  position: relative;
+}
+
+.movieVote {
+  color: whitesmoke;
+  /* margin-left: 6rem; */
+}
+
+.movieVote::before {
+  content: "⭐";
+  padding: 0.5rem;
 }
