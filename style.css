@@ -33,7 +33,7 @@ form {
   content: "🍿";
   padding: 0.5rem;
 }
-.inputForm {
+.search-input {
   background-color: transparent;
   border: 1.5px solid whitesmoke;
   padding: 0.5rem 1rem;
@@ -43,11 +43,11 @@ form {
   font-family: inherit;
 }
 
-.inputForm::placeholder {
+.search-input::placeholder {
   color: #a5a2a2;
 }
 
-.inputForm:focus {
+.search-input:focus {
   outline: none;
   background-color: white;
 }
@@ -116,12 +116,12 @@ button:active {
   position: relative;
 }
 
-.movieVote {
+.movie-votes {
   color: whitesmoke;
   /* margin-left: 6rem; */
 }
 
-.movieVote::before {
+.movie-votes::before {
   content: "⭐";
   padding: 0.5rem;
 }

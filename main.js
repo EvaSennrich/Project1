@@ -17,10 +17,10 @@ const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIKey}&q
 
 //code for accessing the HTML
 let form = document.querySelector("#form");
-let inputForm = document.querySelector(".inputForm");
+let searchInput = document.querySelector(".search-input");
 let moviesgrid = document.querySelector("#movies-grid");
 let moreContentDiv = document.querySelector(".moreContentDiv");
-let showMoreMoviesBtn = document.querySelector(".showMoreMoviesBtn");
+let loadMoreMoviesBtn = document.querySelector(".load-more-movies-btn");
 
 const pageSize = 10;
 var currentApiPage = 0;
@@ -57,7 +57,7 @@ const displayMovies = (movies) => {
     </div>
     <div id="movieInfoContainer">
     <h2 class="movie-title" >${movie.title}</h2>
-    <h5 class="movieVote" >${movie.vote_average}</h5>
+    <h5 class="movie-votes" >${movie.vote_average}</h5>
     </div>
     </div>
     <div class="movieOverview>
@@ -84,12 +84,12 @@ form.addEventListener("submit", (e) => {
 
   e.preventDefault();
   //this var/const stores the value that the user inputs or enter in the inpit field of the form
-  const searchTerm = inputForm.value;
+  const searchTerm = searchInput.value;
 
   //this code is a conditional that tells the computer if searchTerm = true or triggered --> do this  --> which is to run the getDataMovies func which fecths the movies data or objects but in this case would be the specific value that the users inputs, thus we pass the searchURL and concatenate it with the value entered by the user(searchTerm).
   if (searchTerm) {
     getDataMovies(searchURL + searchTerm);
-    inputForm.value = "";
+    searchInput.value = "";
     //and this else says the computer if there's not input entered or the movie does not exist just fecth all movies
   } else {
     getDataMovies(apiURL);
@@ -97,7 +97,7 @@ form.addEventListener("submit", (e) => {
 });
 
 //code that handles show more movies button
-showMoreMoviesBtn.addEventListener("click", (e) => {
+load-more-movies-btn.addEventListener("click", (e) => {
   console.log("clicked");
 });
 
