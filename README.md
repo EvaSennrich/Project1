@@ -4,7 +4,7 @@ Submitted by: **Eva Sennrich**
 
 Estimated time spent: **13** hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://evasennrich.github.io./)
 
 ### Application Features
 
@@ -32,7 +32,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] Deploy website using GitHub Pages. 
+- [X] Deploy website using GitHub Pages. 
 - [ ] Allow user to view more details about a movie within a popup.
 - [X] Improve the user experience through CSS & animation.
 - [ ] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
@@ -68,4 +68,4 @@ through the API documentation I realized that the API URL has 3 pieces of data a
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
-Shout out to my instrcutor and TA's who are always making their best to make us understand the topics!!
+Shout out to my instrcutor and TA's who are always making their best to make sure that we understand the topics!!
