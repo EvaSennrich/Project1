@@ -21,6 +21,7 @@ let searchInput = document.querySelector(".search-input");
 let moviesgrid = document.querySelector("#movies-grid");
 let moreContentDiv = document.querySelector(".moreContentDiv");
 let loadMoreMoviesBtn = document.querySelector(".load-more-movies-btn");
+let closeSearchBtn = document.querySelector(".close-search-btn");
 
 const pageSize = 10;
 var currentApiPage = 0;
@@ -96,9 +97,19 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-//code that handles show more movies button
-load-more-movies-btn.addEventListener("click", (e) => {
-  console.log("clicked");
+closeSearchBtn.addEventListener("click", (e) => {
+  console.log("back");
+  if (e) {
+    getDataMovies(apiURL);
+  }
 });
+
+//code that handles show more movies button
+load -
+  more -
+  movies -
+  btn.addEventListener("click", (e) => {
+    console.log("clicked");
+  });
 
 // https://api.themoviedb.org/3/discover/movie?api_key=###&sort_by=popularity.desc&with_genres=28&page=1

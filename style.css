@@ -77,6 +77,10 @@ button:active {
   color: whitesmoke;
 }
 
+/* .close-search-btn {
+  border-left: 10px;
+} */
+
 #movies-grid {
   display: flex;
   flex-wrap: wrap;
@@ -94,6 +98,7 @@ button:active {
   display: flex;
   justify-content: space-evenly;
   width: 9rem;
+  margin-top: 0.8rem;
 }
 
 .movie-poster {
@@ -128,4 +133,10 @@ button:active {
 .moreContentDiv {
   display: flex;
   justify-content: center;
+}
+
+.movieOverview {
+  background-color: #116914;
+  width: 10rem;
+  content: "HELLOOOO";
 }
