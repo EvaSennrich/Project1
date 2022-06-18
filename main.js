@@ -18,7 +18,7 @@ const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${APIKey}&q
 //code for accessing the HTML
 let form = document.querySelector("#form");
 let inputForm = document.querySelector(".inputForm");
-let contentDiv = document.querySelector("#contentDiv");
+let moviesGrid = document.querySelector("#moviesGrid");
 let moreContentDiv = document.querySelector(".moreContentDiv");
 let showMoreMoviesBtn = document.querySelector(".showMoreMoviesBtn");
 
@@ -49,14 +49,14 @@ getDataMovies(apiURL);
 const displayMovies = (movies) => {
   // code that iterates on each object movie and FOR EACH movie creates a div with its post, title and vote.
   movies.forEach((movie) => {
-    contentDiv.innerHTML +=
+    moviesGrid.innerHTML +=
       //Double check if it's a good practice to create a div for pics only and another one for the info: title, vote
-      `<div class="movieDetails">
+      `<div class="movie-card">
       <div class="imageContainer">
-    <img class="image" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
+    <img class="movie-poster" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
     </div>
     <div id="movieInfoContainer">
-    <h2 class="movieTitle" >${movie.title}</h2>
+    <h2 class="movie-title" >${movie.title}</h2>
     <h5 class="movieVote" >${movie.vote_average}</h5>
     </div>
     </div>
@@ -79,7 +79,7 @@ const displayMovies = (movies) => {
 
 //code for Submit form, for user movie search
 form.addEventListener("submit", (e) => {
-  contentDiv.innerHTML = "";
+  moviesGrid.innerHTML = "";
   //This code prevents the parameter ->e(event) to not be handled if the event "submit" isn't listened/handled!
 
   e.preventDefault();

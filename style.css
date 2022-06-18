@@ -77,7 +77,7 @@ button:active {
   color: whitesmoke;
 }
 
-#contentDiv {
+#moviesGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -85,7 +85,7 @@ button:active {
   margin: 3rem 1.5rem;
 }
 
-.movieDetails {
+.movie-card {
   display: flex;
   flex-direction: column;
 }
@@ -96,7 +96,7 @@ button:active {
   width: 9rem;
 }
 
-.image {
+.movie-poster {
   margin-top: 1rem;
   margin-bottom: 0.2rem;
   height: 13rem;
@@ -105,12 +105,12 @@ button:active {
   box-shadow: 20px -5px 50px rgba(255, 255, 255, 0.3);
 }
 
-.image:hover {
+.movie-poster:hover {
   /* transform: rotateY(-20deg) translateZ(10px); */
   transform: scale(1.1);
 }
 
-.movieTitle {
+.movie-title {
   color: whitesmoke;
   font-size: 1rem;
   position: relative;
