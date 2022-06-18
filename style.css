@@ -77,7 +77,7 @@ button:active {
   color: whitesmoke;
 }
 
-#moviesGrid {
+#movies-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
