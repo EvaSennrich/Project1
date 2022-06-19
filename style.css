@@ -52,7 +52,8 @@ form {
   background-color: white;
 }
 
-button {
+.submitBtn,
+#close-search-btn {
   padding: 0.5rem 1rem;
   border-radius: 16px;
   margin-left: 1rem;
@@ -65,12 +66,47 @@ button {
   color: white;
 }
 
-button:hover {
+.submitBtn:hover {
   background-color: whitesmoke;
   color: #282828;
   border: 1px solid black;
 }
-button:active {
+.submitBtn:active {
+  background-color: #116914;
+  box-shadow: 0 3px rgb(0, 0, 0);
+  transform: translateY(4px);
+  color: whitesmoke;
+}
+
+#close-search-btn:hover {
+  background-color: whitesmoke;
+  color: #282828;
+  border: 1px solid black;
+}
+#close-search-btn:active {
+  background-color: #116914;
+  box-shadow: 0 3px rgb(0, 0, 0);
+  transform: translateY(4px);
+  color: whitesmoke;
+}
+
+.overviewBtn {
+  background-color: azure;
+  color: #282828;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 16px;
+  padding: 0.5rem 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.overviewBtn:hover {
+  background-color: rgb(93, 0, 0);
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+}
+
+.overviewBtn:active {
   background-color: #116914;
   box-shadow: 0 3px rgb(0, 0, 0);
   transform: translateY(4px);
@@ -96,6 +132,8 @@ button:active {
 
 #movieInfoContainer {
   display: flex;
+  /* flex-direction: row;
+  flex-flow: wrap; */
   justify-content: space-evenly;
   width: 9rem;
   margin-top: 0.8rem;
@@ -136,7 +174,8 @@ button:active {
 }
 
 .movieOverview {
-  background-color: #116914;
-  width: 10rem;
-  content: "HELLOOOO";
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
 }

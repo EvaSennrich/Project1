@@ -21,7 +21,8 @@ let searchInput = document.querySelector(".search-input");
 let moviesgrid = document.querySelector("#movies-grid");
 let moreContentDiv = document.querySelector(".moreContentDiv");
 let loadMoreMoviesBtn = document.querySelector(".load-more-movies-btn");
-let closeSearchBtn = document.querySelector(".close-search-btn");
+let closeSearchBtn = document.querySelector("#close-search-btn");
+let overviewBtn = document.querySelector(".overviewBtn");
 
 const pageSize = 10;
 var currentApiPage = 0;
@@ -53,18 +54,17 @@ const displayMovies = (movies) => {
     moviesgrid.innerHTML +=
       //Double check if it's a good practice to create a div for pics only and another one for the info: title, vote
       `<div class="movie-card">
-      <div class="imageContainer">
-    <img class="movie-poster" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
-    </div>
-    <div id="movieInfoContainer">
-    <h2 class="movie-title" >${movie.title}</h2>
-    <h5 class="movie-votes" >${movie.vote_average}</h5>
-    </div>
-    </div>
-    <div class="movieOverview>
-    <h3>Overview:</h3>
-    ${movie.overview}
-    </div>`;
+        <div class="imageContainer">
+          <img class="movie-poster" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
+        </div>
+          <div id="movieInfoContainer">
+            <h2 class="movie-title" >${movie.title}</h2>
+            <h5 class="movie-votes" >${movie.vote_average}</h5>
+          </div> 
+            <div class="movieOverview">
+              <button onclick= "${movie.overview}" type="button" class="overviewBtn">Overview</button>
+            </div>
+        </div>`;
   });
 };
 
@@ -92,24 +92,24 @@ form.addEventListener("submit", (e) => {
     getDataMovies(searchURL + searchTerm);
     searchInput.value = "";
     //and this else says the computer if there's not input entered or the movie does not exist just fecth all movies
-  } else {
-    getDataMovies(apiURL);
   }
 });
 
-closeSearchBtn.addEventListener("click", (e) => {
+closeSearchBtn.addEventListener("click", () => {
+  moviesgrid.innerHTML = "";
   console.log("back");
-  if (e) {
-    getDataMovies(apiURL);
-  }
+  getDataMovies(apiURL);
 });
+
+// overviewBtn.addEventListener("click", (e) => {
+//   e.getDataMovies();
+//   // const overview = data.results.overview;
+//   // console.log(overview);
+// });
 
 //code that handles show more movies button
-load -
-  more -
-  movies -
-  btn.addEventListener("click", (e) => {
-    console.log("clicked");
-  });
+loadMoreMoviesBtn.addEventListener("click", (e) => {
+  console.log("clicked");
+});
 
 // https://api.themoviedb.org/3/discover/movie?api_key=###&sort_by=popularity.desc&with_genres=28&page=1
