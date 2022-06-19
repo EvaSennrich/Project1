@@ -1,3 +1,5 @@
+const pageSize = 10;
+var currentPage = 1;
 //API key which is the 3rd piece/part of the API url
 const APIKey = "9f7ff340242713835a084c08084a9afa";
 
@@ -23,9 +25,6 @@ let moreContentDiv = document.querySelector(".moreContentDiv");
 let loadMoreMoviesBtn = document.querySelector(".load-more-movies-btn");
 let closeSearchBtn = document.querySelector("#close-search-btn");
 let overviewBtn = document.querySelector(".overviewBtn");
-
-const pageSize = 10;
-var currentApiPage = 0;
 
 //popular movies: "/discover/movie?sort_by=popularity.desc"
 
@@ -61,21 +60,29 @@ const displayMovies = (movies) => {
             <h2 class="movie-title" >${movie.title}</h2>
             <h5 class="movie-votes" >${movie.vote_average}</h5>
           </div> 
-            <div class="movieOverview">
-              <button onclick= "${movie.overview}" type="button" class="overviewBtn">Overview</button>
-            </div>
         </div>`;
   });
 };
 
-// const ratingColor = (votes) => {
-//   votes.forEach((vote) => {
-//     if (vote < 5) {
-//       return (movie.vote_average.style.color = "green");
-//     } else {
-//       return (movie.vote_average.style.color = "red");
-//     }
-//   });
+const showMoreMovies = () => {
+  console.log("called");
+  currentPage++;
+  //this url goes inside the function since we're changing the currentPage when the button "show more" is clicked and you need the pageURL to be changed when currentPage is updated.
+  let pageURL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKey}&sort_by=popularity.desc&page=${currentPage}`;
+  getDataMovies(pageURL);
+};
+//  <div class="movieOverview">
+//    <button onclick="${movie.overview}" type="button" class="overviewBtn">
+//      Overview
+//    </button>
+//  </div>;
+
+// const ratingColor = (vote) => {
+//   if (vote < 5) {
+//     return "red";
+//   } else {
+//     return "green";
+//   }
 // };
 
 //code for Submit form, for user movie search
@@ -92,6 +99,8 @@ form.addEventListener("submit", (e) => {
     getDataMovies(searchURL + searchTerm);
     searchInput.value = "";
     //and this else says the computer if there's not input entered or the movie does not exist just fecth all movies
+  } else {
+    getDataMovies(apiURL);
   }
 });
 
@@ -108,8 +117,4 @@ closeSearchBtn.addEventListener("click", () => {
 // });
 
 //code that handles show more movies button
-loadMoreMoviesBtn.addEventListener("click", (e) => {
-  console.log("clicked");
-});
-
-// https://api.themoviedb.org/3/discover/movie?api_key=###&sort_by=popularity.desc&with_genres=28&page=1
+loadMoreMoviesBtn.addEventListener("click", showMoreMovies);

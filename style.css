@@ -113,6 +113,31 @@ form {
   color: whitesmoke;
 }
 
+.load-more-movies-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  font-family: inherit;
+  outline: none;
+  border: 1.5px solid whitesmoke;
+  cursor: pointer;
+  box-shadow: 0 3px #999;
+  background-color: rgb(22, 1, 1);
+  color: white;
+}
+
+.load-more-movies-btn:hover {
+  background-color: rgb(93, 0, 0);
+  color: whitesmoke;
+  border: 1px solid whitesmoke;
+}
+
+.load-more-movies-btn:active {
+  background-color: #116914;
+  box-shadow: 0 3px rgb(0, 0, 0);
+  transform: translateY(4px);
+  color: whitesmoke;
+}
+
 /* .close-search-btn {
   border-left: 10px;
 } */
@@ -171,6 +196,7 @@ form {
 .moreContentDiv {
   display: flex;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .movieOverview {
