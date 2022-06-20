@@ -27,7 +27,7 @@ let closeSearchBtn = document.querySelector("#close-search-btn");
 let overviewBtn = document.querySelector(".overviewBtn");
 let modalDiv = document.querySelector(".modal");
 let overlayDiv = document.querySelector(".overlay");
-let modalCloseBtn = document.querySelector(".modalCloseBtn");
+
 //popular movies: "/discover/movie?sort_by=popularity.desc"
 
 //poster_path: "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg"
@@ -60,7 +60,7 @@ const displayMovies = (movies) => {
         </div>
           <div id="movieInfoContainer">
             <h2 class="movie-title" >${movie.title}</h2>
-            <h5 class="movie-votes" >${movie.vote_average}</h5>
+            <h5 class= "movie-votes" >${movie.vote_average}</h5>
           </div> 
         </div>
         </div>`;
@@ -91,13 +91,13 @@ const showMoreMovies = () => {
 //    </button>
 //  </div>;
 
-// const ratingColor = (vote) => {
-//   if (vote < 5) {
-//     return "red";
-//   } else {
-//     return "green";
-//   }
-// };
+const voteColor = (vote) => {
+  if (vote < 5) {
+    return "red";
+  } else {
+    return "green";
+  }
+};
 
 //code for Submit form, for user movie search
 form.addEventListener("submit", (e) => {
@@ -150,9 +150,9 @@ const popUp = async (id) => {
     </div>
   </div>
   `;
+  let modalCloseBtn = document.querySelector(".modalCloseBtn");
+  modalCloseBtn.addEventListener("click", () => {
+    modalDiv.classList.add("hidden");
+    overlayDiv.classList.add("hidden");
+  });
 };
-
-modalCloseBtn.addEventListener("click", () => {
-  console.log("cliiiick");
-  modalDiv.close();
-});
