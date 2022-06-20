@@ -40,9 +40,9 @@ Deployed Application (optional): [Flixster Deployed Site](https://evasennrich.gi
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+https://user-images.githubusercontent.com/85651695/174561446-bb5fa753-b52c-4104-b234-a55489de06bd.mp4
+
 
 ### Reflection
 
