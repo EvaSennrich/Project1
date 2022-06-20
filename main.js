@@ -25,7 +25,9 @@ let moreContentDiv = document.querySelector(".moreContentDiv");
 let loadMoreMoviesBtn = document.querySelector(".load-more-movies-btn");
 let closeSearchBtn = document.querySelector("#close-search-btn");
 let overviewBtn = document.querySelector(".overviewBtn");
-
+let modalDiv = document.querySelector(".modal");
+let overlayDiv = document.querySelector(".overlay");
+let modalCloseBtn = document.querySelector(".modalCloseBtn");
 //popular movies: "/discover/movie?sort_by=popularity.desc"
 
 //poster_path: "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg"
@@ -52,15 +54,27 @@ const displayMovies = (movies) => {
   movies.forEach((movie) => {
     moviesgrid.innerHTML +=
       //Double check if it's a good practice to create a div for pics only and another one for the info: title, vote
-      `<div class="movie-card">
+      `<div class="movie-card" id=${movie.id}>
         <div class="imageContainer">
-          <img class="movie-poster" src="${imageURL}${movie.poster_path}" alt="${movie.title}">
+          <img class="movie-poster" src="${imageURL}${movie.poster_path}" alt="${movie.title}"/>
         </div>
           <div id="movieInfoContainer">
             <h2 class="movie-title" >${movie.title}</h2>
             <h5 class="movie-votes" >${movie.vote_average}</h5>
           </div> 
+        </div>
         </div>`;
+    movieCards = document.querySelectorAll(".movie-card");
+  });
+
+  addButton(movieCards);
+};
+
+const addButton = (poster) => {
+  poster.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      popUp(poster[index].id);
+    });
   });
 };
 
@@ -118,3 +132,27 @@ closeSearchBtn.addEventListener("click", () => {
 
 //code that handles show more movies button
 loadMoreMoviesBtn.addEventListener("click", showMoreMovies);
+
+const popUp = async (id) => {
+  let overviewUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=9f7ff340242713835a084c08084a9afa`;
+
+  const res = await fetch(overviewUrl);
+  const data = await res.json();
+  modalDiv.classList.toggle("hidden");
+  overlayDiv.classList.toggle("hidden");
+  modalDiv.innerHTML = `
+  <div class="modalHeader">
+    <div class="modalTitle">${data.title}</div>
+    <button class="modalCloseBtn">&times;</button>
+  </div>
+    <div class="modalBody"> 
+      <p class="description">${data.overview}</p>
+    </div>
+  </div>
+  `;
+};
+
+modalCloseBtn.addEventListener("click", () => {
+  console.log("cliiiick");
+  modalDiv.close();
+});

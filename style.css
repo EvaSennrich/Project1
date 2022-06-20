@@ -205,3 +205,61 @@ form {
   align-items: stretch;
   padding: 20px;
 }
+
+.modal {
+  width: 80vw;
+  height: 60vh;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(5px);
+  position: absolute;
+  top: 20vh;
+  right: 10vw;
+  border-radius: 16px;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 3px solid black;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.modalCloseBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(175, 10, 10);
+}
+
+.modalBody {
+  padding: 20px 32px;
+  text-align: justify;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.overlay {
+  position: fixed;
+  opacity: 1;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
